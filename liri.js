@@ -19,18 +19,21 @@ if (arg === "my-tweets") {
     spotify
         .search({ type: 'track', query: songName, limit: 1 })
         .then(function (response) {
-            // console.log(response.tracks.items[0]);
+            //console.log(response.tracks.items[0]);
             console.log('Song name: ' + response.tracks.items[0].name)
             console.log('Album: ' + response.tracks.items[0].album.name);
             console.log('Artist(s): ' + response.tracks.items[0].artists[0].name);
-            console.log('External link: ' + response.tracks.items[0].album.uri);
+            console.log('External link: ' + response.tracks.items[0].external_urls.spotify);
         })
         .catch(function (err) {
             console.log(err);
         });
 }else if (arg === 'movie-this') {
 
+}else if (arg === ''){
+    songName = "Ace of Base";
 }
+
 
 
 
