@@ -8,14 +8,32 @@ let keys = require('./keys.js');
 let spotify = new Spotify(keys.spotify);
 let client = new Twitter(keys.twitter);
 
-console.log(client);
-
 let arg = process.argv[2];
 let songName = process.argv[3];
 
 if (arg === "my-tweets") {
+    console.log(client);
     console.log('my tweetsssss....')
-} else if (arg === "spotify-this-song") {
+}
+if (arg === 'movie-this') {
+    console.log('favorite movie is Saving Private Ryan...')
+}
+if (arg === "spotify-this-song"){
+    if(songName) {
+        spotifyThisSong(songName);
+    } else {
+        spotifyThisSong('Ace of Base');
+    }
+}
+
+
+
+
+
+
+
+
+function spotifyThisSong(songName){
     spotify
         .search({ type: 'track', query: songName, limit: 1 })
         .then(function (response) {
@@ -28,12 +46,6 @@ if (arg === "my-tweets") {
         .catch(function (err) {
             console.log(err);
         });
-}else if (arg === 'movie-this') {
-
-}else if (arg === ''){
-    songName = "Ace of Base";
 }
-
-
 
 
